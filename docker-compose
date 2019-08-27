@@ -1,0 +1,18 @@
+version: '2'
+services:
+  pom_dev_zzl:
+      image: zhangzhaolei/python:3.7-dev
+      restart: always
+      #设置映射目录
+      volumes:
+       - "/home/pom/dev/workspace:/pom_python"
+      environment:
+      #设置数据库
+       # 新增数据库类型设置 支持pymysql psycopg2(人大金仓)
+       - SQLTYPE=pymysql
+      ports:
+       - 22
+      logging:
+       driver: "json-file"
+       options:
+         max-size: "1M"
